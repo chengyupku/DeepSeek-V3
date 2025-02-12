@@ -177,7 +177,7 @@ class Linear(nn.Module):
         super().__init__()
         self.in_features = in_features
         self.out_features = out_features
-        self.weight = nn.Parameter(torch.empty(out_features, in_features, dtype=dtype or Linear.dtype))
+        self.weight = nn.Parameter(torch.rand(out_features, in_features, dtype=dtype or Linear.dtype) * 2 - 1)
         if self.weight.element_size() == 1:
             scale_out_features = (out_features + block_size - 1) // block_size
             scale_in_features = (in_features + block_size - 1) // block_size
